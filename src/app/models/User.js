@@ -23,5 +23,10 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   )
+
+  // Function to compare user password on database and login
+  User.prototype.checkPassword = function (password) {
+    return bcrypt.compare(password, this.password_hash)
+  }
   return User
 }
